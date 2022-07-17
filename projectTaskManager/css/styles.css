@@ -1,0 +1,39 @@
+body{
+    margin: 0;
+    padding: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    min-width: 400px;
+    background-color: #d5e1df;
+}
+
+button {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+    margin-top: 5px;
+    border: 1px solid black;
+    border-radius: 4px;
+    width: 90%;
+
+}
+
+button:hover {
+    box-shadow: 0 2px 5px 2px #cccccc;
+}
+
+button > div {
+    width: 95%;
+    margin: 0;
+}
+
+#userInputbtn {
+    background: #e3eaa7;
+}
+
+#currentProjectsbtn {
+    background: #b5e7a0
+}
+
+#workProjectsbtn {
+    background: #86af49
+}
