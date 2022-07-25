@@ -1,3 +1,5 @@
+let projects = []
+
 function homeScript() {
     let mainContainer = document.querySelector(".container")
     let userInputbtn = document.querySelector("#userInputbtn")
@@ -55,6 +57,11 @@ function homeScript() {
     userInputbtn.addEventListener("click", function() {
         sendGetRequest(addProjectsnippet, function(newPageHTML){innerHTML(mainContainer, newPageHTML)}, false) 
         setTimeout(addScript, 1000)
+    })
+
+    currentProjectsbtn.addEventListener("click", function() {
+        sendGetRequest(currProjectssnippet, function(newPageHTML){innerHTML(mainContainer, newPageHTML)}, false)
+        setTimeout(currProjects, 1000)
     })
 
 }

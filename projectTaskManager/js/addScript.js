@@ -59,32 +59,47 @@ function addScript() {
         targetElem.innerHTML = html;
     };
 
-    /* Load the homeHTML, wait 1 sec then run homeScript */
     goBackbtn.addEventListener("click", function() {
-        
+        loadHomeHTML()
+        console.log("Button being clicked")
+        setTimeout(homeScript, 1000)
     })
 
     addMilestonebtn.addEventListener("click", function() {
         let mileStoneName = document.querySelector("#milestone-el").value 
         let mileStoneDate = document.querySelector("#milestoneDate-el").value
-        /* Add milestone objects to the milestone array */
         if(mileStoneName != "" && mileStoneDate != ""){
-            
+            mileStones.push({
+                name: mileStoneName,
+                date: mileStoneDate
+            })
         }
-        /* List milestones in the ul tag of addproject.html snippet */
         if(mileStones.length != 0){
-            
+            let listEL = document.querySelector("#ul-el")
+            let listItems = ''
+            for(var i = 0; i < mileStones.length; i++){
+            let time = mileStones[i].date.split("T")
+            listItems += `
+                <li>
+                    Milestone name: ${mileStones[i].name}, Date: ${time[0]}, Time: ${time[1]}
+                </li>
+            `
+            } 
+            listEL.innerHTML = listItems
         }
     })
 
     addProjectbtn.addEventListener("click", function() {
         let projectName = document.querySelector("#name-el").value
         let projectDate = document.querySelector("#completionDate-el").value
-        
-        /* Add projectDate to the end milestone, add project to local storage,
-        reset milestones, and loadHomeHTML */
         if(projectName != "" && projectDate != "" && mileStones.length != 0){
-    
+            mileStones.push(projectDate)
+            projects.push(projectName)
+            localStorage.setItem(projectName, JSON.stringify(mileStones))
+            console.log("Item added")
+            mileStones = []
+            loadHomeHTML()
+            setTimeout(homeScript, 1000)
         }
     })
 }
