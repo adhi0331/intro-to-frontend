@@ -1,10 +1,12 @@
 class LinkedList {
+    
     constructor(head = null){
         this.head = head
         this.size = 1
     }
 
     add(index, data) {
+        
         if(index < 0 || index > this.size || data == null){
             throw "Invalid arguments"
         }
@@ -27,9 +29,19 @@ class LinkedList {
 
     //Finish method to remove elements in the linked list
     remove(index) {
-        if(index<0 || index>=size) {
+        if(index<0 || index>=this.size) {
             throw "Invalid arguments"
         }
+
+        let curNode = this.head
+        let curIndex = 0
+        while(index-1!=curIndex){
+            curNode = curNode.next
+            curIndex++
+        }
+        curNode.setNext(curNode.getNext().getNext())
+        this.size--;
+
     }
 
 
@@ -66,3 +78,5 @@ console.log(node1.next)
 let list = new LinkedList(node1)
 list.append(3)
 console.log(list.head.next.next.data)
+list.remove(1)
+console.log(list.head.next.data)

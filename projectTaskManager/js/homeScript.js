@@ -3,8 +3,10 @@ let projects = []
 function homeScript() {
     let mainContainer = document.querySelector(".container")
     let userInputbtn = document.querySelector("#userInputbtn")
+    let workOnProjectbtn = document.querySelector("#workProjectsbtn")
 
     let addProjectsnippet = "html-snippets/addproject.html";
+    let workOnProjectsnippet = "html-snippets/workonproject.html";
 
 
     /* getRequestObject, sendGetRequest, handleResponse functions code 
@@ -63,6 +65,12 @@ function homeScript() {
         sendGetRequest(currProjectssnippet, function(newPageHTML){innerHTML(mainContainer, newPageHTML)}, false)
         setTimeout(currProjects, 1000)
     })
+
+    workOnProjectbtn.addEventListener("click", function() {
+        sendGetRequest(workOnProjectsnippet, function(newPageHTML){innerHTML(mainContainer, newPageHTML)}, false)
+        setTimeout(workOnProject, 1000)
+    })
+ // here is a change
 
 }
 
